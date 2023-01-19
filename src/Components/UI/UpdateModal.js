@@ -1,10 +1,9 @@
-import React, { isValidElement, useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Button from "./Button";
 import style from "./Modal.module.css";
 import Overlay from "./Overlay";
 import ReactDom from "react-dom";
 import DataContext from "../Store/DataContext";
-import CurrentData from "../Store/currentItem";
 
 function UpdateModal(props) {
   const [enteredTask, setEnteredTask] = useState("");
@@ -26,6 +25,7 @@ function UpdateModal(props) {
   useEffect(() => {
     setEnteredTask(props.Data.name);
     setEnteredStatus(props.Data.status);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const taskEnteredHandler = (event) => {
     setEnteredTask(event.target.value);

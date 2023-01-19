@@ -3,7 +3,7 @@ import Container from "./Components/UI/Container";
 import Header from "./Components/Header/Header";
 import ListItem from "./Components/ListItem/ListItem";
 import Modal from "./Components/UI/Modal";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import DataContext from "./Components/Store/DataContext";
 import UpdateModal from "./Components/UI/UpdateModal";
 
