@@ -1,0 +1,49 @@
+.form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40%;
+  padding: 20px;
+  border-radius: 10px;
+  background: #f8f8ff;
+  z-index: 30;
+}
+.form h2 {
+  color: #555;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.form label {
+  font-size: 20px;
+  color: #555;
+  display: block;
+  margin-bottom: 10px;
+}
+.form input,
+.form select {
+  padding: 10px;
+  width: 100%;
+  font-size: 18px;
+  outline: 1px solid #555;
+  border-radius: 5px;
+  border: none;
+}
+.invalid {
+  outline: 1px solid red !important;
+  /* background: rgb(218, 86, 86) !important;
+  border: 5px solid red; */
+}
+.title {
+  margin: 0 10px 10px 0px;
+}
+.status {
+  margin: 10px 10px 20px 0px;
+}
+
+.cancelBtn {
+  background-color: rgb(233, 111, 99) !important;
+  margin-left: 15px !important;
+  color: #111;
+}

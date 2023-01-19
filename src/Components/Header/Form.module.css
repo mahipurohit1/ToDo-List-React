@@ -1,0 +1,6 @@
+.form select {
+  font-size: 20px;
+  padding: 5px;
+  background-color: rgb(232, 227, 227);
+  border-radius: 5px;
+}
