@@ -11,14 +11,14 @@ function App() {
   const [showModal, setShowModal] = useState(false);
   const [showUpdateModal, setShowUpdateModal] = useState(false);
   const [currentItem, setCurrentItem] = useState({});
-  // const [selectOptionValue, setSelectOptionValue] = useState("all");
+  const [selectOptionValue, setSelectOptionValue] = useState("all");
 
   const dataInLocalStorage = JSON.parse(localStorage.getItem("items"));
 
   const [items, setItems] = useState(
     dataInLocalStorage?.length > 0 ? dataInLocalStorage : []
   );
-  const [originalArray, setOriginalArray] = useState([...items]);
+  // const [originalArray, setOriginalArray] = useState([...items]);
 
   const ShowModalHandler = () => {
     setShowModal(true);
@@ -36,13 +36,14 @@ function App() {
   };
   const addItem = function (newItem) {
     setItems([newItem, ...items]);
-    setOriginalArray([newItem, ...items]);
+    // setOriginalArray([newItem, ...items]);
     localStorage.setItem("items", JSON.stringify([newItem, ...items]));
   };
 
   const deleteItem = (id) => {
-    setItems(items.filter((item) => item.id !== id));
-    setOriginalArray(...items.filter((item) => item.id !== id));
+    const ab = items.filter((item) => item.id !== id);
+    setItems(ab);
+    // setOriginalArray(...ab);
     localStorage.setItem(
       "items",
       JSON.stringify(items.filter((item) => item.id !== id))
@@ -55,9 +56,9 @@ function App() {
     if (!updatedItem) return;
     updatedItem.name = newItem.name;
     updatedItem.status = newItem.status;
-    console.log(updatedItem);
+    // console.log(updatedItem);
     setItems(updatedItems);
-    // setOriginalArray([...updatedItems]);
+    // setOriginalArray(updatedItems);
     localStorage.setItem("items", JSON.stringify(updatedItems));
   };
   // useEffect(() => {
@@ -66,18 +67,19 @@ function App() {
 
   //////////////////////////////////////
   const selectOption = (data) => {
-    if (data === "all") {
-      const updatedItems = originalArray.filter(
-        (item) => item.status === "incomplete" || item.status === "complete"
-      );
-      setItems(updatedItems);
-    } else if (data === "incomplete") {
-      const updatedItems = originalArray.filter((item) => item.status === data);
-      setItems(updatedItems);
-    } else {
-      const updatedItems = originalArray.filter((item) => item.status === data);
-      setItems(updatedItems);
-    }
+    setSelectOptionValue(data);
+    // if (data === "all") {
+    //   const updatedItems = originalArray.filter(
+    //     (item) => item.status === "incomplete" || item.status === "complete"
+    //   );
+    //   setItems(updatedItems);
+    // } else if (data === "incomplete") {
+    //   const updatedItems = originalArray.filter((item) => item.status === data);
+    //   setItems(updatedItems);
+    // } else {
+    //   const updatedItems = originalArray.filter((item) => item.status === data);
+    //   setItems(updatedItems);
+    // }
     // console.log(originalArray);
   };
 
@@ -107,7 +109,7 @@ function App() {
           onShowModal={ShowModalHandler}
           onSelectOption={selectOption}
         ></Header>
-        <ListItem></ListItem>
+        <ListItem selectOptionValue={selectOptionValue}></ListItem>
       </Container>
     </DataContext.Provider>
   );
