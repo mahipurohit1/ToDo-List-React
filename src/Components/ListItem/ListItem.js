@@ -6,7 +6,13 @@ import DataContext from "../Store/DataContext";
 
 function ListItem(props) {
   const data = useContext(DataContext);
-  const len = data.items.length;
+  const len = data.items.filter(function (item) {
+    if (props.selectOptionValue === "all") {
+      return true;
+    } else {
+      return item.status === props.selectOptionValue;
+    }
+  }).length;
   return (
     <Card>
       <Task selectOptionValue={props.selectOptionValue} />
